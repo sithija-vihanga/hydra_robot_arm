@@ -9,7 +9,11 @@
 	
   <xacro:include filename="$(find hydra_description)/urdf/hydra_gazebo.xacro" />
   <xacro:include filename="$(find hydra_description)/urdf/hydra_ros2_control.xacro" />
-    
+
+  <!-- Useful XACRO Variables (Properties) -->
+  <xacro:property name="PI" value="3.14159265359" />
+  <xacro:property name="effort" value="30.0" />
+  <xacro:property name="velocity" value="10.0" />
  
   <link name="world"/>
   <link
@@ -114,8 +118,8 @@
     <limit
       lower="-1.57"
       upper="1.57"
-      effort="0"
-      velocity="0" />
+      effort="${effort}"
+      velocity="${velocity}" />
   </joint>
 
   <link
@@ -163,7 +167,7 @@
     name="joint_1"
     type="revolute">
     <origin
-      xyz="0 -0.05 0"
+      xyz="-0.02 -0.05 0"
       rpy="1.8356 0 3.1416" />
     <parent
       link="rotatable_base_link" />
@@ -174,8 +178,8 @@
     <limit
       lower="-1.57"
       upper="1.57"
-      effort="0"
-      velocity="0" />
+      effort="${effort}"
+      velocity="${velocity}" />
   </joint>
   <link
     name="middle_link">
@@ -221,7 +225,7 @@
     name="joint_2"
     type="revolute">
     <origin
-      xyz="0 0.0063552 -0.18258"
+      xyz="-0.02 0.0063552 -0.18258"
       rpy="-0.5902 0 3.1416" />
     <parent
       link="lower_link" />
@@ -232,8 +236,8 @@
     <limit
       lower="-1.57"
       upper="1.57"
-      effort="0"
-      velocity="0" />
+      effort="${effort}"
+      velocity="${velocity}" />
   </joint>
   <link
     name="upper_link">
@@ -290,8 +294,8 @@
     <limit
       lower="-1.57"
       upper="1.57"
-      effort="0"
-      velocity="0" />
+      effort="${effort}"
+      velocity="${velocity}" />
   </joint>
   <link
     name="wrist_link">
@@ -348,8 +352,8 @@
     <limit
       lower="-1.57"
       upper="1.57"
-      effort="0"
-      velocity="0" />
+      effort="${effort}"
+      velocity="${velocity}" />
   </joint>
   <link
     name="left_gripper_link">
@@ -406,8 +410,8 @@
     <limit
       lower="-1.57"
       upper="1.57"
-      effort="0"
-      velocity="0" />
+      effort="${effort}"
+      velocity="${velocity}" />
   </joint>
   <link
     name="right_gripper_link">
@@ -464,8 +468,8 @@
     <limit
       lower="-1.57"
       upper="1.57"
-      effort="0"
-      velocity="0" />
+      effort="${effort}"
+      velocity="${velocity}" />
     <mimic
       joint="joint_5"
       multiplier="1"

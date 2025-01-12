@@ -9,13 +9,13 @@
 using namespace std::chrono_literals;
 using std::placeholders::_1;
 
-class SliderControl : public rclcpp::Node
+class ControlInterface : public rclcpp::Node
 {
 public:
-  SliderControl() : Node("control_interface")
+  ControlInterface() : Node("control_interface")
   {
     sub_ = create_subscription<sensor_msgs::msg::JointState>(
-        "joint_commands", 10, std::bind(&SliderControl::sliderCallback, this, _1));
+        "joint_commands", 10, std::bind(&ControlInterface::sliderCallback, this, _1));
     arm_pub_ = create_publisher<trajectory_msgs::msg::JointTrajectory>("arm_controller/joint_trajectory", 10);
     gripper_pub_ = create_publisher<trajectory_msgs::msg::JointTrajectory>("gripper_controller/joint_trajectory", 10);
     RCLCPP_INFO(get_logger(), "Control interface started");
@@ -33,8 +33,8 @@ private:
     gripper_command.joint_names = {"joint_5"};
 
     trajectory_msgs::msg::JointTrajectoryPoint arm_goal, gripper_goal;
-    arm_goal.positions.insert(arm_goal.positions.end(), msg.position.begin(), msg.position.begin() + 3);
-    gripper_goal.positions.push_back(msg.position.at(3));
+    arm_goal.positions.insert(arm_goal.positions.end(), msg.position.begin(), msg.position.begin() + 5);
+    gripper_goal.positions.push_back(msg.position.at(5));
     
     arm_command.points.push_back(arm_goal);
     gripper_command.points.push_back(gripper_goal);
@@ -48,7 +48,7 @@ private:
 int main(int argc, char* argv[])
 {
   rclcpp::init(argc, argv);
-  auto node = std::make_shared<SliderControl>();
+  auto node = std::make_shared<ControlInterface>();
   rclcpp::spin(node);
   rclcpp::shutdown();
   return 0;

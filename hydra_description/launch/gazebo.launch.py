@@ -12,10 +12,10 @@ from launch_ros.parameter_descriptions import ParameterValue
 
 
 def generate_launch_description():
-    arduinobot_description = get_package_share_directory("hydra_description")
+    hydra_description = get_package_share_directory("hydra_description")
 
     model_arg = DeclareLaunchArgument(name="model", default_value=os.path.join(
-                                        arduinobot_description, "urdf", "hydra_description.urdf"
+                                        hydra_description, "urdf", "hydra_description.urdf"
                                         ),
                                       description="Absolute path to robot urdf file"
     )
@@ -23,7 +23,7 @@ def generate_launch_description():
     gazebo_resource_path = SetEnvironmentVariable(
         name="GZ_SIM_RESOURCE_PATH",
         value=[
-            str(Path(arduinobot_description).parent.resolve())
+            str(Path(hydra_description).parent.resolve())
             ]
         )
     

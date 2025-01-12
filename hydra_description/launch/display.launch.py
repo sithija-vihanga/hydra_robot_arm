@@ -10,10 +10,10 @@ from launch_ros.parameter_descriptions import ParameterValue
 
 
 def generate_launch_description():
-    arduinobot_description_dir = get_package_share_directory("hydra_description")
+    hydra_description_dir = get_package_share_directory("hydra_description")
 
     model_arg = DeclareLaunchArgument(name="model", default_value=os.path.join(
-                                        arduinobot_description_dir, "urdf", "hydra_description.urdf"
+                                        hydra_description_dir, "urdf", "hydra_description.urdf"
                                         ),
                                       description="Absolute path to robot urdf file")
 
@@ -36,7 +36,7 @@ def generate_launch_description():
         executable="rviz2",
         name="rviz2",
         output="screen",
-        arguments=["-d", os.path.join(arduinobot_description_dir, "rviz", "display.rviz")],
+        arguments=["-d", os.path.join(hydra_description_dir, "rviz", "display.rviz")],
     )
 
     return LaunchDescription([

@@ -26,7 +26,7 @@ def generate_launch_description():
 
     control_interface_node = Node(
         package="hydra_controller",
-        executable="slider_control"
+        executable="control_interface"
     )
 
     return LaunchDescription(
