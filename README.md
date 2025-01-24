@@ -2,7 +2,7 @@
 
 Hydra is a 6 degrees-of-freedom robot arm for exploring manipulator frameworks in ROS@ such as Moveit 2. This project is focused on analyzing the state of the art path planning and trajectory control algorithms used for manipulator controls. Its modular design and advanced motion capabilities make it ideal for tasks such as pick-and-place, object manipulation, and trajectory planning.
 
-## Robot assembly:**
+## Robot assembly:
 
 
 https://github.com/user-attachments/assets/17b3ea7c-a54a-45a5-91e5-415c16c06757
